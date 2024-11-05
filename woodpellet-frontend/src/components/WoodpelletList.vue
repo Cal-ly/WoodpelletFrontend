@@ -17,7 +17,7 @@
             <td>{{ woodpellet.id }}</td>
             <td>{{ woodpellet.brand }}</td>
             <td>{{ woodpellet.price }}</td>
-            <td>{{ woodpellet.quality }}</td>
+            <td>{{ getQualityLabel(woodpellet.quality) }}</td>
             <td>
               <button class="btn btn-danger btn-sm" @click="deleteWoodpellet(woodpellet.id)">Delete</button>
             </td>
@@ -33,7 +33,15 @@
   export default {
     data() {
       return {
-        woodpellets: []
+        woodpellets: [],
+        qualityLabels: {
+          0: 'Undefined (0)',
+          1: 'Low (1)',
+          2: 'Medium (2)',
+          3: 'High (3)',
+          4: 'Premium (4)',
+          5: 'Basically Napalm (5)'
+        }
       };
     },
     mounted() {
@@ -57,6 +65,9 @@
           .catch(error => {
             console.error("Error deleting woodpellet:", error);
           });
+      },
+      getQualityLabel(quality) {
+        return this.qualityLabels[quality] || 'Unknown Quality';
       }
     }
   };
