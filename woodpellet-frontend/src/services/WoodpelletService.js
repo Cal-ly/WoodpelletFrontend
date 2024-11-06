@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'https://woodpelletapi2024.azurewebsites.net/woodpellet';
+const API_URL = 'https://woodpelletapi2025.azurewebsites.net/woodpellet';
 
 export default {
   getAll() {
